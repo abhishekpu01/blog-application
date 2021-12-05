@@ -1,0 +1,13 @@
+{%extends 'blog/main.html'%}
+{%block content%}
+<div class="container">
+    <h1 class="h1 text-center">{{post.Title}}</h1>
+    <div class="d-flex justify-content-between">
+    <div class="text-left text-muted">Created By @{{post.Creator.username}}</div>
+    <div class ="text-right text-muted">Created on {{post.Created_on}}</div>
+    </div>
+</div>
+<div class="cen">
+    <p class="h6 my-5">{{post.Content}}</p>
+</cen>
+{%endblock content%}

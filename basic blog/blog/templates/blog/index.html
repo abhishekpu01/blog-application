@@ -1,0 +1,46 @@
+{%extends 'blog/main.html'%}
+{%load static%}
+{%block content%}
+{%if messages%}
+{%for message in messages%}
+<div class="alert {{message.tags}} alert-dismissible fade show" role="alert">
+  <strong>{{message}}</strong>
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{%endfor%}
+{%endif%}
+<header class="my-header w-100 p-5">
+<div class="container">
+    <div class="row d-flex align-items-center justify-content-center">
+        <div class="col-lg-6 col-sm-12 col-md-12">
+            <img src="{%static 'img/blogimg.jpg'%}" class="header-img img-fluid">
+        </div>
+      <div class="col-lg-6 col-sm-12 col-md-12">
+        <h1 class="h1 text-sm-center text-md-center text-lg-start text-white">Create Your Blogs</h1>
+        <p class="h6 text-white mt-2">
+            Blogging is a great way to show your talents and interests to prospective employers, while adding an edge to your resume. If you blog consistently it shows your dedication, passions and creativity – all of which are key attributes employers look for in job candidates.
+        </p>
+      </div>
+    </div>
+  </div>
+</header>
+<div class="container my-5">
+<h3 class="h3 text-center">Some Public posts</h3>
+<div class="row mt-5 g-4">
+  {%for post in posts%}
+  <div class="col-4">
+      <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">{{post.Title}}</h5>
+            <p class="card-text text-muted"><b>{{post.Content|truncatechars:80}}....</b></p>
+            <p class="card-text">Created by @{{post.Creator.username}}</p>
+            <p class="card-text">Created on: {{post.Created_on}}</p>
+            <p class="card-text">Last Updated on: {{post.Updated_on}}</p>
+            <a class="card-link" href="{%url 'SeePost' post.id%}">View</a>
+          </div>
+        </div>
+  </div>
+  {%endfor%}
+</div>
+</div>
+{%endblock content%}
